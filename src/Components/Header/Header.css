@@ -1,0 +1,38 @@
+.header{
+    height: 90px;
+    display: flex;
+    justify-content: space-evenly;
+}
+.logo{
+        height: 80%;
+
+
+}
+.logo img{
+height: 100%;
+    padding: 15px
+}
+.search-bar{
+padding: 20px;
+}
+.search-bar input{
+        padding: 10px;
+    width: 260px;
+    outline: none;
+    border: none;
+}
+.header-links{
+    display: flex;
+    height: 100%;
+    width: 40%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.header-link a{
+    text-decoration: none;
+    color:#DA0037;
+}
+.header-link a:hover{
+    color:white;
+}
