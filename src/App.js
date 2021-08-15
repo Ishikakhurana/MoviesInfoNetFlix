@@ -7,7 +7,7 @@ import {BrowserRouter as Router,Route,Switch} from "react-router-dom";
 import { API_KEY, API_URL } from "./API/secret.js";
 import "./App.css";
 import MoviePage from './Components/MoviePage/MoviePage.jsx';
-
+import Favourite from './Components/Favourite/Favourite.jsx';
 
 
 class App extends Component {
@@ -16,6 +16,7 @@ class App extends Component {
     currentMovie:"batman",
     pages:[],
     currPage:1,
+    favouritePage:[]
     }
 
   async componentDidMount(){
@@ -81,7 +82,9 @@ class App extends Component {
      currPage:pageCount,
     });
   }
-  
+  setFav(){
+    
+  }
   render() { 
     return ( <Router>
       <div className="App">
@@ -99,7 +102,7 @@ class App extends Component {
     setPage={this.setPage}></Pagination>
     </> ):(<h1>OOPS! no movies by that name</h1>)}
         </Route>
-        <Route path="/fav">
+        <Route path="/fav" exact component={Favourite}>
           {/* <Favourite></Favourite> */}
         </Route>
         <Route path="/moviepage" exact component={MoviePage}>

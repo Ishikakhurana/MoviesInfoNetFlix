@@ -3,6 +3,7 @@ import "./Movie.css";
 import {Link} from "react-router-dom";
 import {API_KEY, API_URL, IMAGE_URL } from "../../API/secret";
 import axios from "axios";
+import Favourite from '../Favourite/Favourite';
 class Movie extends Component {
     state = {
       detailedMovieObj:{},
@@ -29,7 +30,7 @@ class Movie extends Component {
           <Link to={{ pathname: "/moviepage", state: this.state.detailedMovieObj }}>
           <img src={posterPath} alt="" />
           </Link>
-          
+          <Favourite></Favourite>       
         </div>
         <div className="movie-info">
           <div className="movie-title">{title}</div>
