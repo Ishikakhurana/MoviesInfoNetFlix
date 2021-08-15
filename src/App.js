@@ -39,6 +39,9 @@ class App extends Component {
       params: { api_key: API_KEY, page: 1, query: newMovie },
     });
     let pages=[];
+    if(data.data.total_pages>10){
+      data.data.total_pages=data.data.total_pages%10;
+    }
     for(let i=1;i<=data.data.total_pages;i++){
       pages.push(i);
     }
