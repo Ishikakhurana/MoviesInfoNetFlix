@@ -14,7 +14,10 @@
     "react-youtube": "^7.13.1",
     "web-vitals": "^1.1.2"
   },
-  "scripts": {
+  "engines": {
+    "node": "14.15.5",
+    "npm": "7.5.4"
+},  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
