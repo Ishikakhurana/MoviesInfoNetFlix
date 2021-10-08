@@ -1,5 +1,5 @@
-##MovieFlix
-View [https://movieflixap.herokuapp.com/](here)
+## MovieFlix
+View [here](https://movieflixap.herokuapp.com/)
 
 # Getting Started with Create React App
 
