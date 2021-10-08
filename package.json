@@ -17,7 +17,8 @@
   "engines": {
     "node": "14.15.5",
     "npm": "7.5.4"
-},  "scripts": {
+  },
+  "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
