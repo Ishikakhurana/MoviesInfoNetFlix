@@ -10,7 +10,7 @@ class MoviePage extends Component {
 
     async componentDidMount(){
         let response=await axios.get(`${API_URL}/movie/${this.props.location.state.id}/videos?api_key=${API_KEY}&language=en-US`)
-        console.log(response);
+        // console.log(response);
         let videoObject = response.data.results.filter((videoObj) => {
             if (videoObj.type === "Trailer" && videoObj.site === "YouTube") {
               return true;
@@ -35,7 +35,7 @@ class MoviePage extends Component {
         return ( 
         <div className="moviepage">
             <div className="movie-page-poster">
-                <img src={poster_path}/>
+                <img src={poster_path} alt="movie-poster"/>
             </div>
 
             <div className="movie-page-details">
@@ -46,7 +46,7 @@ class MoviePage extends Component {
                 </div>
                 <p>{overview}</p>
                 <div className="movie-trailer">
-                    <YouTube videoId={this.state.videoObject.key} opts={opts} ></YouTube>
+                    <YouTube videoId={this.state.videoObject?this.state.videoObject.key : 0} opts={opts} ></YouTube>
                 </div>
             
                

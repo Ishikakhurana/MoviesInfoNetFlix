@@ -11,14 +11,20 @@ import Favourite from './Components/Favourite/Favourite.jsx';
 
 
 class App extends Component {
+ 
   state = {
     moviesData:[],
     currentMovie:"batman",
     pages:[],
     currPage:1,
-    favouritePage:[]
-    }
+    movieFavourites:[],
+    favouritePage:JSON.parse(localStorage.getItem("react-movie-items")) || [],
+  
 
+    }
+ saveToLocalStorage=(items)=>{
+   localStorage.setItem("react-movie-items",JSON.stringify(items));
+ }
   async componentDidMount(){
     let data=await axios.get(API_URL+"/search/movie", {
       params: { api_key: API_KEY, page: 1, query: this.state.currentMovie },
@@ -32,9 +38,13 @@ class App extends Component {
       pages:pages,
     })
   
-  }
-   searchMovie=async (newMovie)=>{
+    
 
+  }
+
+  
+   searchMovie=async (newMovie)=>{
+this.onLoad();
     let data=await axios.get(API_URL+"/search/movie", {
       params: { api_key: API_KEY, page: 1, query: newMovie },
     });
@@ -85,9 +95,23 @@ class App extends Component {
      currPage:pageCount,
     });
   }
-  setFav(){
+  setFavAdd=(movie)=>{
     
+    this.setState({
+      favouritePage:[...this.state.favouritePage,movie]
+    })
+    this.saveToLocalStorage(this.state.favouritePage);
   }
+  setFavRemove=(movie)=>{
+    let newFavPage=this.state.favouritePage.filter((e)=>{
+      return movie.id!=e.id;
+    })
+    this.setState({
+      favouritePage:newFavPage,
+    })
+    this.saveToLocalStorage(newFavPage);
+  }
+
   render() { 
     return ( <Router>
       <div className="App">
@@ -96,7 +120,7 @@ class App extends Component {
         <Route path="/" exact>
         {this.state.moviesData.length?(
         <>
-    <Movies movies={this.state.moviesData}></Movies>
+    <Movies movies={this.state.moviesData} favMovies={this.state.favouritePage} handleFavAdd={this.setFavAdd} handleFavRemove={this.setFavRemove}></Movies>
     <Pagination
     pages={this.state.pages}
     currPage={this.state.currPage}
@@ -106,7 +130,7 @@ class App extends Component {
     </> ):(<h1>OOPS! no movies by that name</h1>)}
         </Route>
         <Route path="/fav" exact component={Favourite}>
-          {/* <Favourite></Favourite> */}
+          <Favourite favMovies={this.state.favouritePage} movies={this.state.movieData}></Favourite>
         </Route>
         <Route path="/moviepage" exact component={MoviePage}>
         </Route>

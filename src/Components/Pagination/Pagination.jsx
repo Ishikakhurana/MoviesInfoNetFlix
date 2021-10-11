@@ -7,7 +7,7 @@ class Pagination extends Component {
         <nav aria-label="...">
   <ul className="pagination justify-content-center">
     {
-      this.props.currPage==1?
+      this.props.currPage===1?
       <li className="page-item disabled">
       <a className="page-link" >Previous</a>
     </li>:
@@ -25,7 +25,7 @@ class Pagination extends Component {
 
   {
     this.props.pages.map((pageCount)=>{
-      return pageCount == this.props.currPage ? (
+      return pageCount === this.props.currPage ? (
         <li className="page-item active">
           <a className="page-link" >
             {pageCount}
@@ -45,7 +45,7 @@ class Pagination extends Component {
       );
     })
   }{
-    this.props.currPage==this.props.pages.length?
+    this.props.currPage===this.props.pages.length?
     <li className="page-item disabled" >
       <a className="page-link">Next</a>
     </li>:<li className="page-item" onClick={this.props.nextPage}>
