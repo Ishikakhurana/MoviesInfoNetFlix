@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# MovieFlix App
+View [here](https://movieflixap.herokuapp.com/)
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
