@@ -44,7 +44,7 @@ class App extends Component {
 
   
    searchMovie=async (newMovie)=>{
-this.onLoad();
+
     let data=await axios.get(API_URL+"/search/movie", {
       params: { api_key: API_KEY, page: 1, query: newMovie },
     });
